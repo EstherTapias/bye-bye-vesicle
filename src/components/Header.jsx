@@ -40,8 +40,8 @@ export default function Header({ alertActive, onPress, activeDay }) {
               PACIENTE VIP · VESÍCULA
             </p>
             <h1 className="font-sans font-black leading-[0.95] uppercase tracking-tight">
-              <span className="block text-4xl sm:text-5xl">Plan de</span>
-              <span className="block text-3xl sm:text-4xl whitespace-nowrap">Recuperación</span>
+              <span className="block text-3xl sm:text-4xl md:text-5xl">Plan de</span>
+              <span className="block text-2xl sm:text-3xl md:text-4xl whitespace-nowrap">Recuperación</span>
             </h1>
           </div>
         </div>

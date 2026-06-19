@@ -64,7 +64,7 @@ export default function RecoveryMenus({ activeDay }) {
       <p className="font-mono text-[10px] tracking-[0.2em] text-[var(--color-ink-soft)] uppercase mb-1">
         PLAN NUTRICIONAL
       </p>
-      <h2 className="font-sans text-5xl md:text-6xl font-black uppercase leading-none mb-6">
+      <h2 className="font-sans text-4xl md:text-6xl font-black uppercase leading-none mb-6">
         Menú de<br />recuperación
       </h2>
 

@@ -37,3 +37,17 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+@media print {
+  body * { visibility: hidden; }
+  .diploma-content,
+  .diploma-content * { visibility: visible; }
+  .diploma-content {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-shadow: none !important;
+  }
+  .no-print { display: none !important; }
+}
