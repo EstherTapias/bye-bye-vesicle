@@ -128,7 +128,7 @@ function MemberCard({ member }) {
 
 export default function MedicalTeam() {
   return (
-    <section className="pt-10 pb-2 border-t-4 border-black mt-8">
+    <section className="pt-10 pb-10 border-t-4 border-black mt-8 -mx-4 px-4 bg-[#FADBD8]">
       <p className="font-mono text-[10px] tracking-[0.2em] text-[var(--color-ink-soft)] uppercase mb-1">
         DIRECTORIO
       </p>

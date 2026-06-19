@@ -7,7 +7,7 @@ export default function HealthBar({ boost, activeDay }) {
   const day = Math.max(0, Math.min(activeDay, 30));
   const basePct = (day / 30) * 100;
   const displayPct = boost ? Math.min(basePct + 6, 100) : basePct;
-  const avatarPct = Math.min(Math.max(displayPct, 4), 96);
+  const avatarPct = Math.min(displayPct, 96);
 
   const phaseTag =
     day === 0  ? "PRE·OP" :
@@ -50,8 +50,11 @@ export default function HealthBar({ boost, activeDay }) {
           {/* Sliding avatar */}
           <motion.div
             className="absolute top-1/2 z-20"
-            animate={{ left: `${avatarPct}%` }}
-            style={{ translateY: "-50%", translateX: "-50%" }}
+            animate={{
+              left: `${avatarPct}%`,
+              x: avatarPct === 0 ? 0 : -22,
+            }}
+            style={{ translateY: "-50%" }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <div className="w-11 h-11 rounded-full overflow-hidden border-4 border-black bg-[var(--color-clinical-soft)] flex items-center justify-center shadow-[3px_3px_0px_#000]">

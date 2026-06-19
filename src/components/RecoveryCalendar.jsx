@@ -3,6 +3,13 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Lock, Check } from "lucide-react";
 import { tips } from "../data/tips";
 
+const ANTICHEAT_MESSAGES = [
+  "¡Epa! ¿Qué haces cotilleando el futuro? ¡Sé paciente y espera a que llegue el día, impaciente!",
+  "¡Cazado! No intentes hacer trampas en el plan de reposo... Kalah y Nahko te están vigilando muy de cerca.",
+  "¡Quieto ahí, vaquero! El sofá tiene sus normas. Cada consejo a su debido tiempo, no te adelantes.",
+  "¡Error 404: Paciente Impaciente! Un gran poder conlleva un gran reposo. Vuelve mañana.",
+];
+
 function useAlreadySeen(day) {
   const key = `tip-seen-day-${day}`;
   const [alreadySeen, setAlreadySeen] = useState(false);
@@ -23,8 +30,47 @@ function useAlreadySeen(day) {
   return [alreadySeen, markAsSeen];
 }
 
+// ─── Anti-cheat modal ─────────────────────────────────────────────────────
+function AnticheatModal({ message, onClose }) {
+  return (
+    <motion.div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={onClose}
+    >
+      <motion.div
+        className="bg-[#E6B940] border-4 border-black p-6 max-w-sm w-full"
+        style={{ boxShadow: "10px 10px 0px #000" }}
+        initial={{ scale: 0.8, rotate: -3 }}
+        animate={{ scale: 1, rotate: 0 }}
+        exit={{ scale: 0.8, opacity: 0 }}
+        transition={{ type: "spring", damping: 18, stiffness: 320 }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <p className="font-mono text-[10px] tracking-[0.3em] uppercase mb-4 text-black/60">
+          ⚠ Trampa detectada
+        </p>
+        <p className="font-sans font-black text-xl leading-snug text-black mb-7">
+          {message}
+        </p>
+        <button
+          onClick={onClose}
+          className="w-full border-4 border-black bg-black text-white
+                     font-sans font-black uppercase text-sm py-3.5
+                     shadow-[4px_4px_0px_#555] active:shadow-none active:translate-x-1 active:translate-y-1
+                     transition-all duration-75"
+        >
+          Vale, vale… me espero
+        </button>
+      </motion.div>
+    </motion.div>
+  );
+}
+
 // ─── Individual day cell ───────────────────────────────────────────────────
-function DayCell({ number, activeDay, alreadySeen, onOpen }) {
+function DayCell({ number, activeDay, alreadySeen, onOpen, onLockedClick }) {
   const isPast      = activeDay > 0 && number < activeDay;
   const isCurrent   = activeDay > 0 && number === activeDay;
   const isFuture    = activeDay === 0 || number > activeDay;
@@ -33,17 +79,20 @@ function DayCell({ number, activeDay, alreadySeen, onOpen }) {
 
   return (
     <button
-      onClick={() => isClickable && onOpen(number)}
-      disabled={!isClickable}
+      onClick={() => {
+        if (isClickable) onOpen(number);
+        else onLockedClick();
+      }}
+      aria-disabled={!isClickable}
       className={`
         relative aspect-square border-2 border-black
         flex flex-col items-center justify-center gap-0.5
         select-none transition-all duration-75
         ${isPast || isSeen
-          ? "bg-[var(--color-clinical)] shadow-[2px_2px_0px_#000] active:shadow-none active:translate-x-[2px] active:translate-y-[2px]"
+          ? "bg-[var(--color-clinical)] shadow-[2px_2px_0px_#000] active:shadow-none active:translate-x-[2px] active:translate-y-[2px] cursor-pointer"
           : isCurrent
           ? "bg-[var(--color-amber)] shadow-[3px_3px_0px_#000] active:shadow-none active:translate-x-[3px] active:translate-y-[3px] cursor-pointer"
-          : "bg-[var(--color-surface)] cursor-default"
+          : "bg-[var(--color-surface)] cursor-not-allowed"
         }
       `}
     >
@@ -128,6 +177,7 @@ function TipModal({ day, onClose }) {
 // ─── Main component ───────────────────────────────────────────────────────
 export default function RecoveryCalendar({ onBoost, activeDay }) {
   const [selectedDay, setSelectedDay] = useState(null);
+  const [anticheatMsg, setAnticheatMsg] = useState(null);
   const [alreadySeen, markAsSeen] = useAlreadySeen(activeDay);
 
   const openTip = (dayNumber) => {
@@ -144,6 +194,11 @@ export default function RecoveryCalendar({ onBoost, activeDay }) {
     setSelectedDay(null);
   };
 
+  const handleLockedClick = () => {
+    const msg = ANTICHEAT_MESSAGES[Math.floor(Math.random() * ANTICHEAT_MESSAGES.length)];
+    setAnticheatMsg(msg);
+  };
+
   const subtitle =
     activeDay === 0  ? "La operación es el lunes 22 de junio. Prepara el sofá." :
     activeDay > 30   ? "¡30 días completados! Misión cumplida." :
@@ -151,7 +206,7 @@ export default function RecoveryCalendar({ onBoost, activeDay }) {
                        "Consejo del día leído. Vuelve mañana.";
 
   return (
-    <section className="pt-10 pb-2 border-t-4 border-black mt-8">
+    <section className="pt-10 pb-10 border-t-4 border-black mt-8 -mx-4 px-4 bg-[#E8F8F5]">
       <p className="font-mono text-[10px] tracking-[0.2em] text-[var(--color-ink-soft)] uppercase mb-1">
         CALENDARIO DE RECUPERACIÓN
       </p>
@@ -169,6 +224,7 @@ export default function RecoveryCalendar({ onBoost, activeDay }) {
             activeDay={activeDay}
             alreadySeen={alreadySeen && n === activeDay}
             onOpen={openTip}
+            onLockedClick={handleLockedClick}
           />
         ))}
       </div>
@@ -192,6 +248,15 @@ export default function RecoveryCalendar({ onBoost, activeDay }) {
       <AnimatePresence>
         {selectedDay !== null && (
           <TipModal day={selectedDay} onClose={closeModal} />
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {anticheatMsg !== null && (
+          <AnticheatModal
+            message={anticheatMsg}
+            onClose={() => setAnticheatMsg(null)}
+          />
         )}
       </AnimatePresence>
     </section>

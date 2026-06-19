@@ -60,11 +60,11 @@ export default function RecoveryMenus({ activeDay }) {
   const rewardUnlocked = activeDay >= 30;
 
   return (
-    <section className="pt-10 pb-2 border-t-4 border-black mt-8">
+    <section className="pt-10 pb-10 border-t-4 border-black mt-8 -mx-4 px-4 bg-[#D4E6F1]">
       <p className="font-mono text-[10px] tracking-[0.2em] text-[var(--color-ink-soft)] uppercase mb-1">
         PLAN NUTRICIONAL
       </p>
-      <h2 className="font-sans text-4xl md:text-6xl font-black uppercase leading-none mb-6">
+      <h2 className="font-sans text-3xl md:text-6xl font-black uppercase leading-none mb-6">
         Menú de<br />recuperación
       </h2>
 
