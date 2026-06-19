@@ -1,6 +1,39 @@
+/* src/index.css — Tailwind v4 · Neo-Brutalismo */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap');
 @import "tailwindcss";
 
+@theme {
+  --color-base:           #FAF6EE;
+  --color-ink:            #000000;
+  --color-ink-soft:       #555555;
+  --color-deep:           #111111;
+  --color-surface:        #EAE5D8;
+  --color-line:           #000000;
+
+  --color-clinical:       #16a34a;
+  --color-clinical-soft:  #dcfce7;
+  --color-amber:          #f59e0b;
+  --color-amber-soft:     #fef3c7;
+  --color-alert:          #dc2626;
+  --color-alert-soft:     #fee2e2;
+
+  --font-display: 'Inter', system-ui, sans-serif;
+  --font-sans:    'Inter', system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, monospace;
+}
+
+* { -webkit-tap-highlight-color: transparent; }
+
 body {
-  font-family: 'Inter', system-ui, sans-serif;
-  margin: 0;
+  background: var(--color-base);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }

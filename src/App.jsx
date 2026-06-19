@@ -1,39 +1,65 @@
-import ConsejoDelDia from "./components/ConsejoDelDia";
-import Vesiculometro from "./components/Vesiculometro";
-import EquipoMedico from "./components/EquipoMedico";
-import MenusMichelin from "./components/MenusMichelin";
-import BotonPanico from "./components/BotonPanico";
+import { useState } from "react";
+import { getCurrentDay } from "./utils/date";
+import Header from "./components/Header";
+import HealthBar from "./components/HealthBar";
+import RecoveryCalendar from "./components/RecoveryCalendar";
+import MedicalTeam from "./components/MedicalTeam";
+import RecoveryMenus from "./components/RecoveryMenus";
+import PanicButton from "./components/PanicButton";
+import DevMode from "./components/DevMode";
 
 function App() {
+  const [alertActive, setAlertActive] = useState(false);
+  const [boost, setBoost] = useState(false);
+  const [devDay, setDevDay] = useState(null); // null = use real device date
+
+  const realDay = getCurrentDay();
+  const activeDay = devDay !== null ? devDay : realDay;
+
+  const triggerAlert = () => {
+    if (alertActive) return;
+    setAlertActive(true);
+    setTimeout(() => setAlertActive(false), 4000);
+  };
+
+  const triggerBoost = () => {
+    setBoost(true);
+    setTimeout(() => setBoost(false), 1800);
+  };
+
+  const changeDevDay = (delta) => {
+    if (delta === "reset") {
+      setDevDay(null);
+      return;
+    }
+    const base = devDay !== null ? devDay : realDay;
+    setDevDay(Math.max(0, Math.min(base + delta, 31)));
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
-      {/* Popup diario — se monta una vez y gestiona su propia lógica */}
-      <ConsejoDelDia />
+    <div className="min-h-screen bg-[var(--color-base)]">
+      <Header
+        alertActive={alertActive}
+        onPress={triggerAlert}
+        activeDay={activeDay}
+      />
 
-      {/* Cabecera tipo "portal médico VIP" */}
-      <header className="px-4 pt-8 pb-4 text-center">
-        <p className="text-cyan-300 text-xs font-bold tracking-[0.2em] uppercase mb-2">
-          Portal Médico VIP
-        </p>
-        <h1 className="text-white font-extrabold text-2xl leading-tight">
-          Recuperación Express
-          <br />
-          <span className="bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent">
-            de Papá 🦸
-          </span>
-        </h1>
-      </header>
+      <HealthBar boost={boost} activeDay={activeDay} />
 
-      <main className="max-w-md mx-auto">
-        <Vesiculometro />
-        <EquipoMedico />
-        <MenusMichelin />
-        <BotonPanico />
+      <main className="max-w-lg md:max-w-xl lg:max-w-3xl xl:max-w-4xl mx-auto px-4">
+        <RecoveryCalendar onBoost={triggerBoost} activeDay={activeDay} />
+        <MedicalTeam />
+        <RecoveryMenus activeDay={activeDay} />
+
+        <DevMode
+          activeDay={activeDay}
+          devDay={devDay}
+          realDay={realDay}
+          onChangeDay={changeDevDay}
+        />
       </main>
 
-      <footer className="text-center text-slate-500 text-xs py-8">
-        Hecho con 💙 por tu Directora de Tecnología y Entretenimiento
-      </footer>
+      <PanicButton variant="fab" active={alertActive} onPress={triggerAlert} />
     </div>
   );
 }
