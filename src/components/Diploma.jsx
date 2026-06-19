@@ -1,9 +1,10 @@
+import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
 
 export default function Diploma({ onClose }) {
-  return (
+  return createPortal(
     <motion.div
-      className="diploma-print-root fixed inset-0 z-50 flex items-center justify-center bg-black/75 px-4 py-8 overflow-y-auto"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 px-4 py-8 overflow-y-auto"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -17,9 +18,10 @@ export default function Diploma({ onClose }) {
         transition={{ type: "spring", damping: 22, stiffness: 260 }}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* ── Printable diploma area ── */}
+        {/* ── Área imprimible — id usado por @media print ── */}
         <div
-          className="diploma-content bg-[var(--color-base)] border-[6px] border-black"
+          id="diploma-container"
+          className="bg-[var(--color-base)] border-[6px] border-black"
           style={{ boxShadow: "10px 10px 0px #000" }}
         >
           {/* Inner decorative frame */}
@@ -116,7 +118,7 @@ export default function Diploma({ onClose }) {
           </div>
         </div>
 
-        {/* Action buttons — hidden on print */}
+        {/* Botones de acción — ocultos en impresión */}
         <div className="no-print flex gap-3 mt-4">
           <button
             onClick={() => window.print()}
@@ -139,6 +141,7 @@ export default function Diploma({ onClose }) {
           </button>
         </div>
       </motion.div>
-    </motion.div>
+    </motion.div>,
+    document.getElementById("diploma-portal")
   );
 }

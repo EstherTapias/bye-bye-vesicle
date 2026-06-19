@@ -44,19 +44,46 @@ body {
 }
 
 @media print {
-  body > * { display: none !important; }
-  .diploma-print-root { display: flex !important; }
-  .diploma-content {
+  /*
+   * CÓMO FUNCIONA:
+   * El diploma se renderiza en #diploma-portal, un div hermano de #root
+   * directamente bajo <body>. Ocultamos #root entero (y todo lo demás)
+   * con el selector :not, y dejamos visible solo el portal.
+   * Así evitamos el problema de display:none en ancestros que impide
+   * mostrar descendientes aunque tengan display:block.
+   */
+
+  /* 1. Ocultar toda la app excepto el portal del diploma */
+  body > *:not(#diploma-portal) { display: none !important; }
+
+  /* 2. Eliminar el fondo oscuro del overlay modal en impresión */
+  #diploma-portal > * {
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  /* 3. Mostrar el contenido del diploma y forzar colores e impresión de fondos */
+  #diploma-container,
+  #diploma-container * {
+    display: block !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* 4. Posicionar el diploma para que ocupe exactamente la página A4 */
+  #diploma-container {
     position: fixed !important;
     inset: 0 !important;
-    width: 100vw !important;
+    width: 100% !important;
     height: 100vh !important;
     margin: 0 !important;
     padding: 1.5cm !important;
     box-sizing: border-box !important;
     box-shadow: none !important;
-    page-break-inside: avoid;
     overflow: hidden !important;
+    background: var(--color-base) !important;
   }
+
+  /* 5. Ocultar botones de acción */
   .no-print { display: none !important; }
 }
