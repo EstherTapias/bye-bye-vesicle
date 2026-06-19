@@ -25,7 +25,7 @@ const team = [
     detail: "Creadora de esta web y responsable oficial del mando a distancia. Gestiona el catálogo de series aprobadas. Disponible 24/7.",
     photo: "/assets/esther.png",
     initial: "E",
-    accent: "#fee2e2",
+    accent: "#dbeafe",
   },
   {
     name: "Nahko",
