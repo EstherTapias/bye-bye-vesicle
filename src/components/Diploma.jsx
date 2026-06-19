@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 export default function Diploma({ onClose }) {
   return (
     <motion.div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 px-4 py-8 overflow-y-auto"
+      className="diploma-print-root fixed inset-0 z-50 flex items-center justify-center bg-black/75 px-4 py-8 overflow-y-auto"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}

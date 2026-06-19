@@ -38,16 +38,25 @@ body {
   }
 }
 
+@page {
+  size: A4 landscape;
+  margin: 0;
+}
+
 @media print {
-  body * { visibility: hidden; }
-  .diploma-content,
-  .diploma-content * { visibility: visible; }
+  body > * { display: none !important; }
+  .diploma-print-root { display: flex !important; }
   .diploma-content {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    margin: 0 !important;
+    padding: 1.5cm !important;
+    box-sizing: border-box !important;
     box-shadow: none !important;
+    page-break-inside: avoid;
+    overflow: hidden !important;
   }
   .no-print { display: none !important; }
 }
