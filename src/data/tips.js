@@ -87,5 +87,5 @@ export const tips = [
   "Mañana es el día 30. Esta noche, sueña con churros, café con leche y el periódico de papel en La Cremita. Ya casi es real.",
 
   // Day 30
-  "¡LO HAS CONSEGUIDO! 30 días de sofá, caldos y dignidad médica ejemplar. La Cremita te espera, Paco y María José vienen desde Chiclana, y nosotras te queremos. Ahora sí, campeón.",
+  "¡LO HAS CONSEGUIDO! 30 días de sofá, caldos y dignidad médica ejemplar. La Cremita te espera, Paco y María José vienen desde Chiclana, y nosotras te queremos. Ahora sí, campeón ¡DISFRUTA DE TU ANTOJO!.",
 ];
