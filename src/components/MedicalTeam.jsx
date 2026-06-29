@@ -39,7 +39,7 @@ const team = [
     name: "Kahla",
     role: "Supervisora de Dieta",
     detail: "Vigila todo lo que comes con mirada inquisidora. Detecta chorizo a metros de distancia. No acepta sobornos (casi nunca).",
-    photo: "/assets/Kahla.jpeg",
+    photo: "/assets/kahla.jpeg",
     initial: "K",
     accent: "#fce7f3",
   },
