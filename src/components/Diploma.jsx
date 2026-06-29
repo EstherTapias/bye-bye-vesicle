@@ -69,7 +69,7 @@ export default function Diploma({ onClose }) {
                 <strong>30 días de postoperatorio oficial</strong> en el sofá. Certificamos
                 que ha sobrevivido a los caldos de Mamá, a la estricta supervisión de
                 Marijose, al control tecnológico de Esther, a la terapia de aplastamiento
-                de piernas de Nahko y a las miradas inquisidoras de Kalah.
+                de piernas de Nahko y a las miradas inquisidoras de Kahla.
               </p>
             </div>
 

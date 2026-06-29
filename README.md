@@ -8,7 +8,7 @@ Una cuenta atrás de 30 días disfrazada de panel médico. Incluye:
 
 - **Calendario de Recuperación** — 30 días desbloqueables, cada uno con un consejo médico personalizado (aprobado por la familia, 0% avalado por ningún colegio de médicos)
 - **Vesiculómetro** — una barra de vida neo-brutalista que mide el progreso sin vesícula
-- **Equipo Médico** — tarjetas expandibles con el equipo de apoyo real: mi madre,mi hermana Marijose, Esther, Nahko mi perro y Kalah la conejita
+- **Equipo Médico** — tarjetas expandibles con el equipo de apoyo real: mi madre,mi hermana Marijose, Esther, Nahko mi perro y Kahla la conejita
 - **Menús Michelin** — el plan de alimentación postoperatoria convertido en carta de restaurante de lujo
 - **Botón de Pánico** — reproduce un aullido de mi perro Nahko y avisa a la enfermera de turno del sofá
 

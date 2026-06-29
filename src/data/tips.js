@@ -15,7 +15,7 @@ export const tips = [
   "Nahko ha informado que te moviste un centímetro a la izquierda sin autorización escrita. Su mirada de desaprobación ya está en marcha.",
 
   // Day 6
-  "Kalah te observa desde la jaula con cara de juicio. Ella come heno sin rechistar. Tú también puedes con el arroz blanco.",
+  "Kahla te observa desde la jaula con cara de juicio. Ella come heno sin rechistar. Tú también puedes con el arroz blanco.",
 
   // Day 7
   "Prohibido acercarse a La Cremita. Paco y María José están al tanto y tienen instrucciones de bloquearte en la puerta si hace falta.",
@@ -36,7 +36,7 @@ export const tips = [
   "Sonreír no afecta a la cicatriz. Los médicos lo han confirmado por escrito. Inténtalo hoy una vez. Solo una. Para que veamos que puedes.",
 
   // Day 13
-  "Kalah lleva días mirándote comer gelatina con expresión filosófica. Su silencio lo dice todo. El tuyo también podría decir más.",
+  "Kahla lleva días mirándote comer gelatina con expresión filosófica. Su silencio lo dice todo. El tuyo también podría decir más.",
 
   // Day 14
   "¡Dos semanas! Tu vesícula descansa en paz y tú en el sofá. Una simbiosis perfecta que nadie esperaba que funcionara tan bien.",
@@ -63,7 +63,7 @@ export const tips = [
   "La Cremita ya casi huele desde aquí. Bueno, no del todo. Pero en 9 días, sí. El desayuno te espera con la mesa puesta.",
 
   // Day 22
-  "Kalah ha pasado revista a tu dieta de hoy. Su veredicto: aceptable. Sus estándares son altos, pero reconoce el esfuerzo.",
+  "Kahla ha pasado revista a tu dieta de hoy. Su veredicto: aceptable. Sus estándares son altos, pero reconoce el esfuerzo.",
 
   // Day 23
   "Cuenta atrás para los churros: 7 días. Puedes empezar a soñar con ellos. Solo soñar, que el cuerpo manda.",
@@ -81,7 +81,7 @@ export const tips = [
   "Paco ya tiene la mesa reservada en La Cremita. La promesa está hecha. Esto ya no tiene marcha atrás posible.",
 
   // Day 28
-  "Nahko y Kalah han acordado una tregua histórica para reconocer juntos que casi has llegado. Es un momento único e irrepetible.",
+  "Nahko y Kahla han acordado una tregua histórica para reconocer juntos que casi has llegado. Es un momento único e irrepetible.",
 
   // Day 29
   "Mañana es el día 30. Esta noche, sueña con churros, café con leche y el periódico de papel en La Cremita. Ya casi es real.",

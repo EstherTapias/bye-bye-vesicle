@@ -5,7 +5,7 @@ import { tips } from "../data/tips";
 
 const ANTICHEAT_MESSAGES = [
   "¡Epa! ¿Qué haces cotilleando el futuro? ¡Sé paciente y espera a que llegue el día, impaciente!",
-  "¡Cazado! No intentes hacer trampas en el plan de reposo... Kalah y Nahko te están vigilando muy de cerca.",
+  "¡Cazado! No intentes hacer trampas en el plan de reposo... Kahla y Nahko te están vigilando muy de cerca.",
   "¡Quieto ahí, vaquero! El sofá tiene sus normas. Cada consejo a su debido tiempo, no te adelantes.",
   "¡Error 404: Paciente Impaciente! Un gran poder conlleva un gran reposo. Vuelve mañana.",
 ];
